@@ -17,4 +17,13 @@ public class Calculator {
         }
         return number1 / number2;
     }
+
+    public double squareRoot(double number) {
+        if (number >= 0) {
+            return Math.sqrt(number);
+        } else {
+            System.out.println("Error: Square root of a negative number is not allowed.");
+            return Double.NaN;
+        }
+    }
 }

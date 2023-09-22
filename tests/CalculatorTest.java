@@ -1,7 +1,7 @@
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 public class CalculatorTest {
     private Calculator calculator;
@@ -38,5 +38,23 @@ public class CalculatorTest {
     @Test
     public void testDivisionByZero() {
         assertThrows(ArithmeticException.class, () -> calculator.divide(5.0, 0.0));
+    }
+
+    @Test
+    public void testSquareRootOfPositiveNumber() {
+        double result = calculator.squareRoot(16.0);
+        assertEquals(4.0, result, 0.05); // Allow a small margin of error for floating-point comparisons
+    }
+
+    @Test
+    public void testSquareRootOfZero() {
+        double result = calculator.squareRoot(0.0);
+        assertEquals(0.0, result, 0.05);
+    }
+
+    @Test
+    public void testSquareRootOfNegativeNumber() {
+        double result = calculator.squareRoot(-9.0);
+        assertTrue(Double.isNaN(result)); // Check if the result is NaN (not-a-number)
     }
 }
